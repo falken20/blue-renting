@@ -1,0 +1,17 @@
+{
+  "name": "blue-renting",
+  "version": "0.0.0",
+  "description": "Webcomponent blue-renting following open-wc recommendations",
+  "author": "blue-renting",
+  "license": "MIT",
+  "scripts": {
+    "start": "web-dev-server"
+  },
+  "dependencies": {
+    "lit-html": "^1.3.0",
+    "lit-element": "^2.4.0"
+  },
+  "devDependencies": {
+    "@web/dev-server": "^0.1.8"
+  }
+}
