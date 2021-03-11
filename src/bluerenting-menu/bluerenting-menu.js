@@ -15,7 +15,7 @@ class BluerentingMenu extends LitElement {
     static get styles() {
         return css`
             .navbar-custom { 
-                background-color: #060A4B; 
+                background-color: #0f1741; 
             }
         `;
       }
@@ -29,11 +29,11 @@ class BluerentingMenu extends LitElement {
             <div class="collapse navbar-collapse" id="navbar-bluerenting">
                 <ul class="navbar-nav mr-auto">
                    <li class="nav-item">
-                        <button class="btn btn-light" @click="${this.hideAdminCoches}">Comprar</a>
+                        <button class="btn btn-light" @click="${this.hideAdminCoches}">Comprar</button>
                     </li>
                     <li> | </li>
                     <li class="nav-item">
-                        <button class="btn btn-light" @click="${this.showAdminCoches}">Admin</a>
+                        <button class="btn btn-light" @click="${this.showAdminCoches}">Admin</button>
                     </li>
                 </ul>
             </div>

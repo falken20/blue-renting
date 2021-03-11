@@ -24,14 +24,16 @@ class BluerentingAdminCoches extends LitElement {
     render() {
         return html`
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-        <h1>Admin Coches</h1>
+        <div class="d-grid gap-2">
+            <button class="btn btn-danger btn-lg" type="button" disabled>Mantenimiento Vehículos</button>
+        </div>
         <div>
             <form id="formEdicion" class="d-none">
             <div class="row">
                 <div class="col-4">
                     <input type="text" class="form-control" id="nameForm" placeholder="Name">
                     <input type="text" class="form-control" id="modelForm" placeholder="Model">
-                    <input type="text" class="form-control" id="priceForm" placeholder="Price (€)">
+                    <input type="number" class="form-control" id="priceForm" placeholder="Price (€)">
                     <input type="text" class="form-control" id="imageUrlForm" placeholder="url imagen">
                 </div>
                 <div class="col-4 d-grid gap-2 md-block">

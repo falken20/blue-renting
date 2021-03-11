@@ -29,8 +29,10 @@ class BluerentingMain extends LitElement {
     render() {
         return html`
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-            <h1>Listado de vehículos disponibles</h1>
             <div class="row" id="cochesList">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-outline-danger btn-lg" type="button" disabled>Listado de vehículos disponibles</button>
+                </div>
                 <div class="row row-cols-1 row-cols-sm-4"> 
                     ${this.coches.map(
                         coche => html`
