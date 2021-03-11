@@ -1,65 +1,78 @@
 import { LitElement, html } from 'lit-element';
-import '../bluerenting-ficha-compra/bluerenting-ficha-compra'
-import { apiVehicles } from '../api';
 
+import '../bluerenting-ficha/bluerenting-ficha.js'
+import '../bluerenting-cesta/bluerenting-cesta.js'
 
 class BluerentingSidebar extends LitElement {
 
     static get properties() {
         return {
-            coches: {type: Object}
+            cesta: {type: Array},
+            id: {type: String},
+            name: {type: String},
+            price: {type: String}
         }
     }
 
     constructor() {
         super()
 
-        this.coches = []
-        this.getCestaCompra()
+        this.cesta = [];
+    
     }
 
     render() {
         return html`
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-        <h4>Cesta Compra</h4>
-        <div class="col" id="cestaList">
-            <div class="col col-rows-1 col-rows-sm-4">
-            ${this.coches.map(
-                coche => html`
-                    <bluerenting-ficha-compra 
-                        name="${coche.name}"
-                        price="${coche.price}"
-                        imageUrl="${coche.imageUrl}"
-                        @delete-item=""
-                        @info-item=""
-                    >
-                    </bluerenting-ficha-compra>`
-            )} 
+        <h2>Cesta</h2>
+        <div class="row" id="cochesList">
+                <div class="row row-cols-1 row-cols-sm-1"> 
+                    ${this.cesta.map(
+                        coche => html`
+                        <bluerenting-cesta
+                            name="${coche.name}"
+                            price="${coche.price}"
+                            imageUrl="${coche.imageUrl}"
+                            @delete-coche="${this.deleteCoche}"
+                        >
+                        </bluerenting-cesta>
+                        `
+                    )}
+                </div>    
             </div>
-        </div>
-       `;
+        `;
     }       
 
-    getCestaCompra() {
-        console.log("GetCestaCompra")
-        let xhr = new XMLHttpRequest();
-        xhr.onload = () => {
-            if (xhr.status === 200) {
-                console.log(xhr.responseText)
-                let APIResponse = JSON.parse(xhr.responseText);
+    updated(changeProperties) {
+        console.log("updated en persona-app")
 
-                // El campo que nos interesa de esa api se llama results
-                //this.coches = APIResponse.results
-                this.coches = APIResponse
-                console.log(this.coches)
-            }
+        if (changeProperties.has("id")) {
+            console.log("Ha cambiado el valor de la propiedad id: " + this.id + this.name + this.price)
+            
+            this.cesta = [...this.cesta, 
+                {
+                    name: this.name,
+                    price: this.price,
+                    imageUrl: this.imageUrl
+                }
+            ];
+            
         }
-
-        // open no envia la petición, es como una especia de init
-        xhr.open("GET", apiVehicles);
-        // Hacemos la petición
-        xhr.send();
     }
+    
+
+    deleteCoche(e){
+        console.log("delete coche en sidebar");
+        console.log(e);
+        console.log("Estamos en sidebar. borramos  " + e.detail.id + " " + e.detail.name +  " " +e.detail.price);
+
+        this.cesta = this.cesta.filter(
+            coche => coche.name != e.detail.name
+        );
+
+    }
+    
+
 }
 
 customElements.define('bluerenting-sidebar', BluerentingSidebar);

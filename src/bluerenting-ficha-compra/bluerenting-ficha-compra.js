@@ -24,7 +24,7 @@ class BluerentingFichaCompra extends LitElement {
             <img src="${this.imageUrl}" height="100" width="100">
             <div class="card-body">
                 <p class="card-title">${this.name}</p>
-                <p class="card-text">${this.price} €</p>
+                <p class="card-text">${this.price}</p>
             </div>
             <div class="card-footer">
                 <button class="btn btn-danger col-5" @click="${this.deletePerson}"><strong>X</strong></button>
