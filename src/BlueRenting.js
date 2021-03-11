@@ -28,14 +28,43 @@ export class BlueRenting extends LitElement {
       <main>
 
           <bluerenting-header></bluerenting-header>
-          <bluerenting-menu></bluerenting-menu>
+          <bluerenting-menu @show-admin-coches="${this.showAdminCoches}" @hide-admin-coches="${this.hideAdminCoches}"></bluerenting-menu>
           <div class="row">
               <bluerenting-sidebar class="col-2"></bluerenting-sidebar>
-              <bluerenting-main class="col-10"></bluerenting-main>
+              <bluerenting-main @add-coche="${this.addCoche}" @add-cesta="${this.addCesta}" class="col-10"></bluerenting-main>
           </div>
           <bluerenting-footer></bluerenting-footer>
 
       </main>
     `;
   }
+
+  showAdminCoches() {
+    console.log("showAdminCoches en BlueRenting")
+    this.shadowRoot.querySelector("bluerenting-main").showAdminCoches = true
+  }
+
+  hideAdminCoches() {
+    console.log("hideAdminCoches en BlueRenting")
+    this.shadowRoot.querySelector("bluerenting-main").showAdminCoches = false
+  }
+
+  addCoche (e){
+    console.log("addCoche desde Bluerenting.js");
+    console.log(e);
+
+  }
+
+  addCesta (e){
+    console.log("addcesta desde Bluerenting.js");
+    console.log(e);
+
+    this.shadowRoot.querySelector("bluerenting-sidebar").id = e.detail.id
+    this.shadowRoot.querySelector("bluerenting-sidebar").name = e.detail.name
+    this.shadowRoot.querySelector("bluerenting-sidebar").price = e.detail.price 
+    this.shadowRoot.querySelector("bluerenting-sidebar").imageUrl = e.detail.imageUrl 
+
+
+  }
 }
+

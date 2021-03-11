@@ -10,7 +10,6 @@ class BluerentingMenu extends LitElement {
     constructor() {
         super()
 
-        this.title = 'Blue Renting';
     }
 
     static get styles() {
@@ -29,18 +28,28 @@ class BluerentingMenu extends LitElement {
 
             <div class="collapse navbar-collapse" id="navbar-bluerenting">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/" target="_blank">Opcion</a>
+                   <li class="nav-item">
+                        <button class="btn btn-light" @click="${this.hideAdminCoches}">Comprar</a>
                     </li>
-
+                    <li> | </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/" target="_blank">Opcion</a>
+                        <button class="btn btn-light" @click="${this.showAdminCoches}">Admin</a>
                     </li>
                 </ul>
             </div>
         </nav>
         `;
     }       
+
+    showAdminCoches() {
+        console.log("Click en Admin menu")
+        this.dispatchEvent(new CustomEvent("show-admin-coches", {}))
+    }
+    
+    hideAdminCoches() {
+        console.log("Click en Admin menu")
+        this.dispatchEvent(new CustomEvent("hide-admin-coches", {}))
+    }
 
 
 }
