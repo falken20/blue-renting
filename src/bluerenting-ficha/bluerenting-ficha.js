@@ -19,8 +19,8 @@ class BluerentingFicha extends LitElement {
     render() {
         return html`
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-            <div class="card h-100">
-                <img src="${this.imageUrl}" height="150" width="200" ></img>    
+            <div class="card h-100 card text-center">
+                <img src="${this.imageUrl}" class="card-img-top" height="150" width="200" ></img>    
                 <div class="card-body">
                     <h4 class="card-title">${this.name}</h4>
                     <p class="card-text">Identificador ${this.id}</p>
@@ -30,7 +30,7 @@ class BluerentingFicha extends LitElement {
                     </ul>
                 </div>
                 <div class="card-footer">
-                    <button @click="${this.addCoche}" class="btn btn-primary "><strong>Seleccionar</strong></button>
+                    <button @click="${this.addCoche}" class="btn btn-primary"><strong>Seleccionar</strong></button>
                 </div>
             </div>
 

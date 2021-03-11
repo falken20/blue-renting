@@ -24,9 +24,10 @@ class BluerentingSidebar extends LitElement {
     render() {
         return html`
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-        <h2>Cesta</h2>
-        <div class="row" id="cochesList">
-                <div class="row row-cols-1 row-cols-sm-1"> 
+        <div class="row">
+            <button class="btn btn-outline-danger btn-lg" type="button" disabled>Cesta</button>
+        </div>
+        <div class="row" style="margin: 0 auto;" id="cochesList">
                     ${this.cesta.map(
                         coche => html`
                         <bluerenting-cesta
@@ -38,8 +39,7 @@ class BluerentingSidebar extends LitElement {
                         </bluerenting-cesta>
                         `
                     )}
-                </div>    
-            </div>
+        </div>
         `;
     }       
 
