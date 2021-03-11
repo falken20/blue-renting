@@ -1,10 +1,14 @@
 import { LitElement, html } from 'lit-element';
+import { apiVehicles } from '../api';
+import '../bluerenting-admin-coches/bluerenting-admin-coches'
 
 class BluerentingMain extends LitElement {
 
     static get properties() {
         return {
             coches: {type: Array},
+
+            showAdminCoches: {type: Boolean}
         }
     }
 
@@ -12,41 +16,50 @@ class BluerentingMain extends LitElement {
         super()
 
         this.coches = [];
-        this.getCoches()
+        this.showAdminCoches = false;
     }
 
     render() {
         return html`
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
             <h1>Main Page</h1>
-            <h1>Coches: ${this.coches}</h1>
-
-
+            <div class="row">
+                <h1>Coches: ${this.coches}</h1>
+            </div>
+            <div class="row">
+                <bluerenting-admin-coches class="d-none" id="bluerentingAdminCoches"></bluerenting-admin-coches>
+            </div>
         `;
     }       
 
+    updated(changedProperties) {
+        console.log("updated en bluerenting-main")
+
+        if (changedProperties.has("showAdminCoches")) {
+            console.log("Valor de showAdminCoches: " + this.showAdminCoches)
+            if (this.showAdminCoches === true) {
+                this.shadowRoot.getElementById("bluerentingAdminCoches").classList.remove("d-none")
+            } else {
+                this.shadowRoot.getElementById("bluerentingAdminCoches").classList.add("d-none")
+            }
+        }
+    }
+
     getCoches() {
         console.log("Get Coches")
-        // Usamos AJAX
         let xhr = new XMLHttpRequest();
 
-        // onload signifcica que se ha lanzado la petición y ha llegado, en este caso lo que estoy haciendo es 
-        // cuando se finaliza la petición se ejecuta la función anonima ()
-        // Funcion anonima que no tiene nombre, por eso se pone () nada más, podria ser ... = hola() => {...}
         xhr.onload = () => {
             if (xhr.status === 200) {
                 console.log(xhr.responseText)
                 let APIResponse = JSON.parse(xhr.responseText);
 
-                // El campo que nos interesa de esa api se llama results
-                this.coches = APIResponse.results
-                console.log(APIResponse)
+                //this.coches = APIResponse.results
+                this.coches = xhr.responseText
             }
         }
 
-        // open no envia la petición, es como una especia de init
-        xhr.open("GET", "https://dev-bluerenting-dluj3qlvta-oa.a.run.app/api/v2/vehicles");
-        // Hacemos la petición
+        xhr.open("GET", apiVehicles);
         xhr.send();
 
     }

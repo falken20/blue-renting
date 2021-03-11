@@ -11,7 +11,6 @@ class BluerentingFooter extends LitElement {
     constructor() {
         super()
 
-        this.title = 'Blue Renting';
     }
 
     render() {

@@ -1,0 +1,1 @@
+export const apiVehicles = "https://bluerenting-dluj3qlvta-oa.a.run.app/api/v2/vehicles"

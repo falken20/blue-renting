@@ -28,7 +28,7 @@ export class BlueRenting extends LitElement {
       <main>
 
           <bluerenting-header></bluerenting-header>
-          <bluerenting-menu></bluerenting-menu>
+          <bluerenting-menu @show-admin-coches="${this.showAdminCoches}" @hide-admin-coches="${this.hideAdminCoches}"></bluerenting-menu>
           <div class="row">
               <bluerenting-sidebar class="col-2"></bluerenting-sidebar>
               <bluerenting-main class="col-10"></bluerenting-main>
@@ -38,4 +38,15 @@ export class BlueRenting extends LitElement {
       </main>
     `;
   }
+
+  showAdminCoches() {
+    console.log("showAdminCoches en BlueRenting")
+    this.shadowRoot.querySelector("bluerenting-main").showAdminCoches = true
+  }
+
+  hideAdminCoches() {
+    console.log("hideAdminCoches en BlueRenting")
+    this.shadowRoot.querySelector("bluerenting-main").showAdminCoches = false
+  }
+
 }
