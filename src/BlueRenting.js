@@ -1,5 +1,10 @@
 import { LitElement, html, css } from 'lit-element';
 import { openWcLogo } from './open-wc-logo.js';
+import './bluerenting-header/bluerenting-header'
+import './bluerenting-menu/bluerenting-menu'
+import './bluerenting-sidebar/bluerenting-sidebar'
+import './bluerenting-main/bluerenting-main'
+import './bluerenting-footer/bluerenting-footer'
 
 export class BlueRenting extends LitElement {
   static get properties() {
@@ -10,80 +15,27 @@ export class BlueRenting extends LitElement {
 
   static get styles() {
     return css`
-      :host {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        font-size: calc(10px + 2vmin);
-        color: #1a2b42;
-        max-width: 960px;
-        margin: 0 auto;
-        text-align: center;
-        background-color: var(--blue-renting-background-color);
-      }
-
-      main {
-        flex-grow: 1;
-      }
-
-      .logo > svg {
-        margin-top: 36px;
-        animation: app-logo-spin infinite 20s linear;
-      }
-
-      @keyframes app-logo-spin {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      .app-footer {
-        font-size: calc(12px + 0.5vmin);
-        align-items: center;
-      }
-
-      .app-footer a {
-        margin-left: 5px;
-      }
     `;
   }
 
   constructor() {
     super();
-    this.title = 'My app';
   }
 
   render() {
     return html`
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
       <main>
-        <div class="logo">${openWcLogo}</div>
-        <h1>${this.title}</h1>
 
-        <p>Edit <code>src/BlueRenting.js</code> and save to reload.</p>
-        <a
-          class="app-link"
-          href="https://open-wc.org/guides/developing-components/code-examples/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Code examples
-        </a>
+          <bluerenting-header></bluerenting-header>
+          <bluerenting-menu></bluerenting-menu>
+          <div class="row">
+              <bluerenting-sidebar class="col-2"></bluerenting-sidebar>
+              <bluerenting-main class="col-10"></bluerenting-main>
+          </div>
+          <bluerenting-footer></bluerenting-footer>
+
       </main>
-
-      <p class="app-footer">
-        🚽 Made with love by
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://github.com/open-wc"
-          >open-wc</a
-        >.
-      </p>
     `;
   }
 }
