@@ -20,7 +20,7 @@ class BluerentingFicha extends LitElement {
         return html`
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
             <div class="card h-100 card text-center">
-                <img src="${this.imageUrl}" class="card-img-top" height="150" width="200" ></img>    
+                <img src="${this.imageUrl}" class="card-img-top img-fluid" height="150" width="200" ></img>    
                 <div class="card-body">
                     <h4 class="card-title">${this.name}</h4>
                     <ul class="list-group list-group-flush">

@@ -20,7 +20,7 @@ class BluerentingCesta extends LitElement {
         return html`
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
             <div class="card h-10 w-65 card text-center">
-                <img src="${this.imageUrl}" class="card-img-top" height="100" width="150" ></img>    
+                <img src="${this.imageUrl}" class="card-img-top img-fluid" height="100" width="150" ></img>    
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">${this.name} </li>
