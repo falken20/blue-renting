@@ -154,7 +154,7 @@ class BluerentingAdminCoches extends LitElement {
             xhr.send(JSON.stringify(this.createJSON()));
         } else {
             console.log("Save update")
-            xhr.open("PUT", apiVehicles);
+            xhr.open("PUT", apiVehicles + "/" + this.id_temp);
             xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
             console.log(this.createJSON())
