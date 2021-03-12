@@ -2,6 +2,7 @@ import { LitElement, html } from 'lit-element';
 
 import '../bluerenting-ficha/bluerenting-ficha.js'
 import '../bluerenting-cesta/bluerenting-cesta.js'
+import { apiPedidos } from '../api.js';
 
 class BluerentingSidebar extends LitElement {
 
@@ -30,9 +31,9 @@ class BluerentingSidebar extends LitElement {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         <div align="right">
             <div class="row">
-                <button class="btn btn-outline-danger btn-lg" type="button" disabled>Cesta</button>
+                <button class="btn btn-outline-primary btn-lg" type="button" disabled>Cesta</button>
                 <button class="btn btn-outline-dark" type="button" disabled>Total: ${this.totalCesta} euros/mes</button>
-                <button class="btn btn-danger " type="button" disabled>Comprar</button>
+                <button class="btn btn-danger " type="button" @click="${this.hacerPedido}">Comprar</button>
             </div>
             <div class="row" style="margin: 0 auto;" id="cochesList">
                         ${this.cesta.map(
@@ -52,6 +53,45 @@ class BluerentingSidebar extends LitElement {
         </div>
         `;
     }       
+
+    hacerPedido() {
+        if (this.cesta.length > 0) {
+            console.log("hacerPedido")
+            console.log(this.cesta)
+            console.log("Total Compra: " + this.totalCesta)
+
+            let jsonToSend = this.createJSON()
+            console.log(jsonToSend)
+
+            let xhr = new XMLHttpRequest();
+            xhr.onload = () => {
+                if ((xhr.status === 201) || (xhr.status === 200)) {
+                    console.log(xhr.responseText)
+                    console.log("Se ha guardado correctamente el pedido")
+                    this.cesta = []
+                }
+            }
+            xhr.open("POST", apiPedidos);
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+            xhr.send(JSON.stringify(jsonToSend));
+        }
+    }
+
+    createJSON() {
+        // Cogemos ids de coches
+        let idsCoches = []; 
+        for (var i=0; i<this.cesta.length; i++) { 
+            idsCoches.push(this.cesta[i].id);
+        }    
+
+        let jsonCoche = {
+            "idVehicles": idsCoches,
+            "totalPrice": this.totalCesta,
+            "userId": "user_equipo4@gmail.com",
+        }
+        return jsonCoche
+    }
 
     updated(changeProperties) {
         console.log("updated en bluerenting-sidebar")

@@ -25,7 +25,7 @@ class BluerentingAdminCoches extends LitElement {
         return html`
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         <div class="d-grid gap-2">
-            <button class="btn btn-danger btn-lg" type="button" disabled>Mantenimiento Vehículos</button>
+            <button class="btn btn-outline-primary btn-lg" type="button" disabled>Mantenimiento Vehículos</button>
         </div>
         <div>
             <form id="formEdicion" class="d-none">
@@ -37,8 +37,8 @@ class BluerentingAdminCoches extends LitElement {
                     <input type="text" class="form-control" id="imageUrlForm" placeholder="url imagen">
                 </div>
                 <div class="col-4 d-grid gap-2 md-block">
-                    <button class="btn btn-primary col-3" type="button" @click=${this.saveCoche}>Save</button>
-                    <button class="btn btn-primary col-3" type="button" @click=${this.cancelEdicion}>Cancel</button>
+                    <button class="btn btn-outline-primary col-3" type="button" @click=${this.saveCoche}>Save</button>
+                    <button class="btn btn-outline-primary col-3" type="button" @click=${this.cancelEdicion}>Cancel</button>
                 </div>
             </div>
             </form>
