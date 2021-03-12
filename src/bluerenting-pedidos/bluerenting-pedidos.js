@@ -7,6 +7,7 @@ class BluerentingPedidos extends LitElement {
     static get properties() {
         return {
             pedidos: {type: Array},
+            updateLista: {type: Boolean}
         }
     }
 
@@ -14,6 +15,7 @@ class BluerentingPedidos extends LitElement {
         super()
 
         this.pedidos = []
+        this.updateLista = true
         this.getPedidos()
     }
 
@@ -21,7 +23,7 @@ class BluerentingPedidos extends LitElement {
         return html`
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         <div class="d-grid gap-2">
-            <button class="btn btn-success btn-lg" type="button" disabled>Pedidos</button>
+            <button class="btn btn-outline-primary btn-lg" type="button" disabled>Pedidos</button>
         </div>
         <table class="table table-striped">
             <thead>
@@ -34,24 +36,41 @@ class BluerentingPedidos extends LitElement {
                 </tr>
             </thead>
             <tbody>
+
             ${this.pedidos.map(
                 pedido => html`
-                    <tr>
-                    <th scope="row">${pedido.userId}</th>
-                    <td>${pedido.totalPrice} €/mes</td>
-                    ${pedido.vehicles.map(
-                        car => html`
-                        <td>${car.name}</td>
-                        <td>${car.model}</td>
-                        <td><img src="${car.imageUrl}" heigth="50" width="50"></td>
-                    `)}
+
+                    <tr class="table-primary">
+                      <td scope="row">${pedido.userId}</td>
+                      <td>${pedido.totalPrice} €/mes</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
                     </tr>
+
+                    
+
+                        ${pedido.vehicles.map(
+                          car => html`
+                          <tr>
+                          <td></td>
+                          <td></td>
+                          <td>${car.name}</td>
+                          <td>${car.model}</td>
+                          <td><img src="${car.imageUrl}" heigth="50" width="50"></td>
+                          </tr>
+                        `)}
+                    
                 `)}
             </tbody>
         </table>
 
         `;
     }   
+    updated() {
+        console.log("updated en bluerenting-pedidos")
+        this.getPedidos()
+    }
 
     getPedidos() {
         console.log("getPedidos")

@@ -34,7 +34,7 @@ class BluerentingMain extends LitElement {
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
             <div class="row" id="cochesList">
                 <div class="d-grid gap-2">
-                    <button class="btn btn-outline-danger btn-lg" type="button" disabled>Listado de vehículos disponibles</button>
+                    <button class="btn btn-outline-primary btn-lg" type="button" disabled>Listado de vehículos disponibles</button>
                 </div>
                 <div class="row row-cols-1 row-cols-sm-4"> 
                     ${this.coches.map(
@@ -98,8 +98,8 @@ class BluerentingMain extends LitElement {
                 this.shadowRoot.getElementById("bluerentingPedidos").classList.remove("d-none")
                 this.shadowRoot.getElementById("bluerentingAdminCoches").classList.add("d-none")
                 this.shadowRoot.getElementById("cochesList").classList.add("d-none")
+                this.shadowRoot.getElementById("bluerentingPedidos").updateLista = !this.shadowRoot.getElementById("bluerentingPedidos").updateLista
             } else {
-                console.log("ENTRO")
                 this.shadowRoot.getElementById("bluerentingPedidos").classList.add("d-none")
                 this.shadowRoot.getElementById("bluerentingAdminCoches").classList.add("d-none")
                 this.shadowRoot.getElementById("cochesList").classList.remove("d-none")                
