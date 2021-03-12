@@ -28,7 +28,7 @@ export class BlueRenting extends LitElement {
       <main>
 
           <bluerenting-header></bluerenting-header>
-          <bluerenting-menu @show-admin-coches="${this.showAdminCoches}" @hide-admin-coches="${this.hideAdminCoches}"></bluerenting-menu>
+          <bluerenting-menu @show-admin-coches="${this.showAdminCoches}" @show-fichas="${this.showFichas}" @show-pedidos="${this.showPedidos}"></bluerenting-menu>
           <div class="row">
               <bluerenting-sidebar class="col-2"></bluerenting-sidebar>
               <bluerenting-main @add-coche="${this.addCoche}" @add-cesta="${this.addCesta}" class="col-10"></bluerenting-main>
@@ -42,13 +42,21 @@ export class BlueRenting extends LitElement {
   showAdminCoches() {
     console.log("showAdminCoches en BlueRenting")
     this.shadowRoot.querySelector("bluerenting-main").showAdminCoches = true
+    this.shadowRoot.querySelector("bluerenting-main").showPedidos = false  
   }
 
-  hideAdminCoches() {
-    console.log("hideAdminCoches en BlueRenting")
+  showFichas() {
+    console.log("showFichas en BlueRenting")
+    this.shadowRoot.querySelector("bluerenting-main").showAdminCoches = false
+    this.shadowRoot.querySelector("bluerenting-main").showPedidos = false  
+  }
+
+  showPedidos () {
+    console.log("showPedidos en BlueRenting")
+    this.shadowRoot.querySelector("bluerenting-main").showPedidos = true  
     this.shadowRoot.querySelector("bluerenting-main").showAdminCoches = false
   }
-
+  
   addCoche (e){
     console.log("addCoche desde Bluerenting.js");
     console.log(e);

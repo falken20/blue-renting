@@ -30,8 +30,11 @@ class BluerentingFooter extends LitElement {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         <div class="row divfooter">
             <div class="row align-items-end">
-                <div class="col align-self-right" align="right">
+                <div class="col align-self-left" align="right">
                     <button class="btn btn-light disabled btn-lg">@BlueRenting 2021</button>
+                </div>
+                <div class="col align-self-right" align="right">
+                    <small style="color: white;">Powered by Mª Angeles, Edu, Tino, Jose y Richi</small>
                 </div>
             </div>
         </div>

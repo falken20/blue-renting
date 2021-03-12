@@ -3,6 +3,8 @@ import { apiVehicles } from '../api';
 import '../bluerenting-admin-coches/bluerenting-admin-coches'
 import '../bluerenting-ficha/bluerenting-ficha.js'
 import '../bluerenting-sidebar/bluerenting-sidebar.js'
+import '../bluerenting-pedidos/bluerenting-pedidos'
+
 
 class BluerentingMain extends LitElement {
 
@@ -10,6 +12,7 @@ class BluerentingMain extends LitElement {
         return {
             coches: {type: Array},
             showAdminCoches: {type: Boolean},
+            showPedidos: {type: Boolean},
             //coches: {type: Object},
             cesta: {type: Array}
         };
@@ -52,7 +55,9 @@ class BluerentingMain extends LitElement {
             <div class="row">
                 <bluerenting-admin-coches class="d-none" id="bluerentingAdminCoches"></bluerenting-admin-coches>
             </div>
-            
+            <div class="row">
+                <bluerenting-pedidos class="d-none" id="bluerentingPedidos"></bluerenting-pedidos>
+            </div>            
         `;
     }      
 
@@ -82,14 +87,22 @@ class BluerentingMain extends LitElement {
     updated(changedProperties) {
         console.log("updated en bluerenting-main")
 
-        if (changedProperties.has("showAdminCoches")) {
+        if (changedProperties.has("showAdminCoches") || changedProperties.has("showPedidos")) {
             console.log("Valor de showAdminCoches: " + this.showAdminCoches)
+            console.log("Valor de showPedidos: " + this.showPedidos)
             if (this.showAdminCoches === true) {
                 this.shadowRoot.getElementById("bluerentingAdminCoches").classList.remove("d-none")
                 this.shadowRoot.getElementById("cochesList").classList.add("d-none")
-            } else {
+                this.shadowRoot.getElementById("bluerentingPedidos").classList.add("d-none")
+            } else if (this.showPedidos === true) { 
+                this.shadowRoot.getElementById("bluerentingPedidos").classList.remove("d-none")
                 this.shadowRoot.getElementById("bluerentingAdminCoches").classList.add("d-none")
-                this.shadowRoot.getElementById("cochesList").classList.remove("d-none")
+                this.shadowRoot.getElementById("cochesList").classList.add("d-none")
+            } else {
+                console.log("ENTRO")
+                this.shadowRoot.getElementById("bluerentingPedidos").classList.add("d-none")
+                this.shadowRoot.getElementById("bluerentingAdminCoches").classList.add("d-none")
+                this.shadowRoot.getElementById("cochesList").classList.remove("d-none")                
             }
         }
     }

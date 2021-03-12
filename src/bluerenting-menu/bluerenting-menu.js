@@ -29,7 +29,11 @@ class BluerentingMenu extends LitElement {
             <div class="collapse navbar-collapse" id="navbar-bluerenting">
                 <ul class="navbar-nav mr-auto">
                    <li class="nav-item">
-                        <button class="btn btn-light" @click="${this.hideAdminCoches}">Comprar</button>
+                        <button class="btn btn-light" @click="${this.showFichas}">Comprar</button>
+                    </li>
+                    <li> | </li>
+                    <li class="nav-item">
+                        <button class="btn btn-light" @click="${this.showPedidos}">Pedidos</button>
                     </li>
                     <li> | </li>
                     <li class="nav-item">
@@ -46,11 +50,15 @@ class BluerentingMenu extends LitElement {
         this.dispatchEvent(new CustomEvent("show-admin-coches", {}))
     }
     
-    hideAdminCoches() {
+    showFichas() {
         console.log("Click en Admin menu")
-        this.dispatchEvent(new CustomEvent("hide-admin-coches", {}))
+        this.dispatchEvent(new CustomEvent("show-fichas", {}))
     }
 
+    showPedidos() {
+        console.log("Click en Admin menu")
+        this.dispatchEvent(new CustomEvent("show-pedidos", {}))
+    }
 
 }
 
