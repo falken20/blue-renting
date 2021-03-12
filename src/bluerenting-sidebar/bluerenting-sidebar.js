@@ -13,6 +13,7 @@ class BluerentingSidebar extends LitElement {
             price: {type: String},
             imageUrl: {type: String},
             hayCambios: {type: Boolean},
+            totalCesta: {type: Number}
         }
     }
 
@@ -20,6 +21,7 @@ class BluerentingSidebar extends LitElement {
         super()
 
         this.cesta = [];
+        this.totalCesta = 0;
     
     }
 
@@ -29,6 +31,8 @@ class BluerentingSidebar extends LitElement {
         <div align="right">
             <div class="row">
                 <button class="btn btn-outline-danger btn-lg" type="button" disabled>Cesta</button>
+                <button class="btn btn-outline-dark" type="button" disabled>Total: ${this.totalCesta} euros/mes</button>
+                <button class="btn btn-danger " type="button" disabled>Comprar</button>
             </div>
             <div class="row" style="margin: 0 auto;" id="cochesList">
                         ${this.cesta.map(
@@ -86,9 +90,28 @@ class BluerentingSidebar extends LitElement {
                         cantidad: 1
                     }
                 ];               
+            }                        
+
+            this.totalCesta = 0;
+            for (var i=0; i<this.cesta.length; i++) { 
+                this.totalCesta += (this.cesta[i].cantidad * this.cesta[i].price);
             }
             
-            console.log(this.cesta)
+            function dar_formato(num){
+                var cadena = ""; var aux;
+                var cont = 1,m,k;                 
+                if(num<0) aux=1; else aux=0;                
+                num=num.toString(); 
+                for(m=num.length-1; m>=0; m--){                 
+                    cadena = num.charAt(m) + cadena;                 
+                    if(cont%3 == 0 && m >aux)  cadena = "." + cadena; else cadena = cadena;                 
+                    if(cont== 3) cont = 1; else cont++;
+                }
+                cadena = cadena.replace(/.,/,",");
+                return cadena;
+            }
+
+            this.totalCesta = dar_formato(this.totalCesta);        
             
         }
     }
@@ -102,6 +125,26 @@ class BluerentingSidebar extends LitElement {
         this.cesta = this.cesta.filter(
             coche => coche.id != e.detail.id
         );
+        this.totalCesta = 0;
+        for (var i=0; i<this.cesta.length; i++) { 
+            this.totalCesta += (this.cesta[i].cantidad * this.cesta[i].price);
+        }
+
+        function dar_formato(num){
+            var cadena = ""; var aux;
+            var cont = 1,m,k;                 
+            if(num<0) aux=1; else aux=0;                
+            num=num.toString(); 
+            for(m=num.length-1; m>=0; m--){                 
+                cadena = num.charAt(m) + cadena;                 
+                if(cont%3 == 0 && m >aux)  cadena = "." + cadena; else cadena = cadena;                 
+                if(cont== 3) cont = 1; else cont++;
+            }
+            cadena = cadena.replace(/.,/,",");
+            return cadena;
+        }
+
+        this.totalCesta = dar_formato(this.totalCesta);        
 
     }
     
