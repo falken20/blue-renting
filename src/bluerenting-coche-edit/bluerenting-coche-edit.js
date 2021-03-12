@@ -26,7 +26,8 @@ class BluerentingCocheEdit extends LitElement {
             </th>
             <!-- <td>${this.id}</td> -->
             <td><img src="${this.imageUrl}" height=50 width=50</td>
-            <td><b>Model: </b>${this.name}</td>
+            <td><b>Name: </b>${this.name}</td>
+            <td><b>Model: </b>${this.model}</td>
             <td><b>Precio: </b>${this.price} €</td>`;
     }   
 
