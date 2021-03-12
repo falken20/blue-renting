@@ -67,9 +67,11 @@ class BluerentingPedidos extends LitElement {
 
         `;
     }   
-    updated() {
-        console.log("updated en bluerenting-pedidos")
-        this.getPedidos()
+    updated(changedProperties) {
+        if (changedProperties.has("updateLista")) {
+            console.log("updated en bluerenting-pedidos")
+            this.getPedidos()
+        }
     }
 
     getPedidos() {
