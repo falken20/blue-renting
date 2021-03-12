@@ -10,7 +10,9 @@ class BluerentingSidebar extends LitElement {
             cesta: {type: Array},
             id: {type: String},
             name: {type: String},
-            price: {type: String}
+            price: {type: String},
+            imageUrl: {type: String},
+            hayCambios: {type: Boolean},
         }
     }
 
@@ -36,6 +38,7 @@ class BluerentingSidebar extends LitElement {
                                 price="${coche.price}"
                                 imageUrl="${coche.imageUrl}"
                                 cantidad="${coche.cantidad}"
+                                id="${coche.id}"
                                 @delete-coche="${this.deleteCoche}"
                             >
                             </bluerenting-cesta>
@@ -48,8 +51,9 @@ class BluerentingSidebar extends LitElement {
 
     updated(changeProperties) {
         console.log("updated en bluerenting-sidebar")
+        console.log(changeProperties)
 
-        if (changeProperties.has("id")) {
+        if (changeProperties.has("hayCambios")) {
             console.log("Ha cambiado el valor de la propiedad id: " + this.id + "-" + this.name + "-" + this.price)
             
             
@@ -70,6 +74,7 @@ class BluerentingSidebar extends LitElement {
             if (indexOfCoche !== -1) {
                 console.log("Encontrado coche a modificar en cesta")
                 this.cesta[indexOfCoche].cantidad += 1
+                this.cesta = this.cesta
             } else {
                 console.log("NO encontrado coche a modificar en cesta")
                 this.cesta = [...this.cesta, 
@@ -95,7 +100,7 @@ class BluerentingSidebar extends LitElement {
         console.log("Estamos en sidebar. borramos  " + e.detail.id + " " + e.detail.name +  " " +e.detail.price);
 
         this.cesta = this.cesta.filter(
-            coche => coche.name != e.detail.name
+            coche => coche.id != e.detail.id
         );
 
     }

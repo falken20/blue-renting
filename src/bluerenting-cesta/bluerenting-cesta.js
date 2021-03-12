@@ -43,6 +43,7 @@ class BluerentingCesta extends LitElement {
         this.dispatchEvent(
             new CustomEvent("delete-coche", {
                 "detail" : {
+                    "id": this.id,
                     "name" : this.name,
                     "precio": this.precio,
                     "imageUrl": this.imageUrl
