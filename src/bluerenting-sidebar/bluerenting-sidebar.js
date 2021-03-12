@@ -69,6 +69,7 @@ class BluerentingSidebar extends LitElement {
                     console.log(xhr.responseText)
                     console.log("Se ha guardado correctamente el pedido")
                     this.cesta = []
+                    this.totalCesta = 0
                 }
             }
             xhr.open("POST", apiPedidos);
