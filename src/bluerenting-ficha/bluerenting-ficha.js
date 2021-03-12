@@ -23,7 +23,6 @@ class BluerentingFicha extends LitElement {
                 <img src="${this.imageUrl}" class="card-img-top" height="150" width="200" ></img>    
                 <div class="card-body">
                     <h4 class="card-title">${this.name}</h4>
-                    <p class="card-text">Identificador ${this.id}</p>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Modelo ${this.model} </li>
                         <li class="list-group-item">${this.price} euros/mes</li>

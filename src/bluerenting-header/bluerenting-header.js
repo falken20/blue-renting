@@ -13,7 +13,7 @@ class BluerentingHeader extends LitElement {
 
         this.title = 'Blue Renting';
         this.imgsrc = '../img/bluerenting.png';
-        this.imgbackground = '../img/header.png';
+        this.imgbackground = '../img/header3.png';
     }
 
     static get styles() {
@@ -30,7 +30,7 @@ class BluerentingHeader extends LitElement {
 
         <div class="row" class="divheader">
             <div class="col-2 divheader"><img src="${this.imgsrc}" height="150"></img></div>
-            <div class="col-10 divheader"><img src="${this.imgbackground}" height="150" with="1000"></img></div>
+            <div class="col-10 divheader" align="center"><img src="${this.imgbackground}" height="150" with="1000"></img></div>
         </div>
         `;
     }       
