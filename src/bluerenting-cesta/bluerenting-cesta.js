@@ -7,7 +7,8 @@ class BluerentingCesta extends LitElement {
             id: {type: String},
             name: {type: String},
             price: {type: Number},
-            imageUrl: {type: String}
+            imageUrl: {type: String},
+            cantidad: {type: String},
         };
     }
 
@@ -24,6 +25,7 @@ class BluerentingCesta extends LitElement {
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">${this.name} </li>
                         <li class="list-group-item">${this.price} euros/mes</li>
+                        <li class="list-group-item">Cant.: ${this.cantidad}</li>
                     </ul>
                 </div>            
                 <div class="card-footer">
