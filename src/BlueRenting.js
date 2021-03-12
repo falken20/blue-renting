@@ -63,6 +63,7 @@ export class BlueRenting extends LitElement {
     this.shadowRoot.querySelector("bluerenting-sidebar").name = e.detail.name
     this.shadowRoot.querySelector("bluerenting-sidebar").price = e.detail.price 
     this.shadowRoot.querySelector("bluerenting-sidebar").imageUrl = e.detail.imageUrl 
+    this.shadowRoot.querySelector("bluerenting-sidebar").hayCambios = !this.shadowRoot.querySelector("bluerenting-sidebar").hayCambios 
 
 
   }
